@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signatureBuilder.css">
+    <script defer src="signatureBuilder.js"></script>
+    <title>Signature Builder</title>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Enter Your Details</h2>
+        <form id="signatureForm">
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="jobTitle">Job Title:</label>
+                <input type="text" id="jobTitle" name="jobTitle" required>
+            </div>
+        </form>
+    </div>
+    
+    <div class="signature-preview">
+        <p id="name" style='font-size: 11pt; font-family: Inter Semibold; color: #C32026; line-height: 0'></p>
+        <p id="jobTitlePreview" style='font-size: 11pt; font-family: Inter; color: #000000; line-height: 0.5'></p>
+    
+        <p style='font-size: 20pt; font-family: Inter Semibold; color: #C32026; line-height: 0'><b>—————————</b></p>
+    
+        <p style='font-size: 14pt; font-family: DM Serif Display; color: #c32026; line-height: 0.5'>Cardinal Compliance Consultants, LLC</p>
+        <p style='font-size: 9pt; font-family: Inter; color: #000000; line-height: 0.5'>5353 Secor Road | Toledo, OH 43623 | <a href="https://www.cardinalhs.net" style='font-size: 9pt; font-family: Inter'>www.cardinalhs.net</a></p>
+        <p style='font-size: 9pt; font-family: Inter; color: #000000; line-height: 0.5'>Phone: (419) 882-9224 | Fax: (419) 882-9226</p>
+    
+        <a href="https://www.facebook.com/cardinalsafety"><img width="35" height="auto" src="https://img.icons8.com/ios-filled/50/facebook-new.png" alt="facebook-new"/></a>
+        <a href="https://www.linkedin.com/company/cardinalcompliance/"><img width="35" height="auto" src="https://img.icons8.com/ios-filled/50/linkedin.png" alt="linkedin"/></a>
+        <a href="http://www.youtube.com/@cardinalcompliance"><img width="35" height="auto" src="https://img.icons8.com/ios-filled/50/youtube-play.png" alt="youtube-play"/></a>
+    
+        <p><a href="http://www.cardinalhs.net"><img width="auto" height="100" src="https://cardinalhs.net/wp-content/uploads/2024/04/Cardinal-Compliance-Consultants-Logo-2024.png"/></a></p>
+    </div>
+    
+    <button id="copySignatureButton">Copy Signature</button>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
