@@ -139,15 +139,20 @@ header {
     border-radius: 5px;
     font-size: 14px;
     z-index: 1000;
-    animation: pop-up 2s ease;
+    animation: pop-down 2s ease;
 }
 
-@keyframes slide-up {
-    0% { transform: translate(-50%, 100%); }
-    100% { transform: translate(-50%, 0); }
+.notification.error {
+    background-color: rgba(255, 0, 0, 0.8);
+    color: var(--primaryWhite);
 }
 
-@keyframes pop-up {
+.notification:not(.error) {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--primaryWhite);
+}
+
+@keyframes pop-down {
     0% { transform: translate(-50%, -100%); }
     25% { transform: translate(-50%, 0); opacity: 1; }
     75% {opacity: 1;}
