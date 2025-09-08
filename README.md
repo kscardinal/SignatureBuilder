@@ -2,7 +2,7 @@
 `SignatureBuilder` is a lightweight web app for generating professional email signatures for Cardinal Compliance Consultants, LLC.
 
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![GitHub License](https://img.shields.io/github/license/kscardinal/SignatureBuilder)
 ![GitHub Release](https://img.shields.io/github/v/release/kscardinal/SignatureBuilder)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/t/kscardinal/SignatureBuilder)
 ![GitHub last commit](https://img.shields.io/github/last-commit/kscardinal/SignatureBuilder)
