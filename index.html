@@ -3,9 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="signatureBuilder.css">
-    <script defer src="signatureBuilder.js"></script>
     <title>Signature Builder</title>
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --primaryRed: #C32026;
+            --primaryWhite: #FFFFFF;
+            --primaryBlack: #000000;
+            --secondaryDarkRed: #740E12;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: "Inter", Arial, Helvetica, sans-serif;
+            background-color: var(--primaryWhite);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Form Container Styles */
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: 20px;
+        }
+
+        .form-container h2 {
+            font-family: "Inter semibold";
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-family: "Inter";
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"] {
+            width: calc(100% - 12px);
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        /* Signature Preview Container Styles (for the webpage view, not copied HTML) */
+        .signature-preview {
+            /* Note: The styles for the signature itself are INLINE on the elements below */
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px; 
+            margin: 40px;
+        }
+
+        /* Copy Button Styles */
+        #copySignatureButton {
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 1rem;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #copySignatureButton:hover {
+            background-color: var(--primaryRed);
+            color: var(--primaryWhite);
+        }
+
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 1000;
+            animation: pop-down 2s ease;
+        }
+
+        .notification.error {
+            background-color: rgba(255, 0, 0, 0.8);
+            color: var(--primaryWhite);
+        }
+
+        @keyframes pop-down {
+            0% { transform: translate(-50%, -100%); opacity: 0; }
+            25% { transform: translate(-50%, 0); opacity: 1; }
+            75% {opacity: 1;}
+            100% {opacity: 0;}
+        }
+    </style>
 </head>
 
 <body>
@@ -25,25 +134,198 @@
     </div>
     
     <div class="signature-preview">
-        <p id="name" style='font-size: 11pt; font-family: Inter Semibold; color: #C32026; line-height: 0'></p>
-        <p id="jobTitlePreview" style='font-size: 11pt; font-family: Inter; color: #000000; line-height: 0.5'></p>
-    
-        <p style='font-size: 20pt; font-family: Inter Semibold; color: #C32026; line-height: 0'><b>—————————</b></p>
-    
-        <p style='font-size: 14pt; font-family: DM Serif Display; color: #c32026; line-height: 0.5'>Cardinal Compliance Consultants, LLC</p>
-        <p style='font-size: 9pt; font-family: Inter; color: #000000; line-height: 0.5'>5353 Secor Road | Toledo, OH 43623 | <a href="https://www.cardinalhs.net" style='font-size: 9pt; font-family: Inter'>www.cardinalhs.net</a></p>
-        <p style='font-size: 9pt; font-family: Inter; color: #000000; line-height: 0.5'>Phone: (419) 882-9224 | Fax: (419) 882-9226</p>
-    
-        <a href="https://www.facebook.com/cardinalsafety"><img width="35" height="auto" src="https://img.icons8.com/ios-filled/50/facebook-new.png" alt="facebook-new"/></a>
-        <a href="https://www.linkedin.com/company/cardinalcompliance/"><img width="35" height="auto" src="https://img.icons8.com/ios-filled/50/linkedin.png" alt="linkedin"/></a>
-        <a href="http://www.youtube.com/@cardinalcompliance"><img width="35" height="auto" src="https://img.icons8.com/ios-filled/50/youtube-play.png" alt="youtube-play"/></a>
-    
-        <p><a href="http://www.cardinalhs.net"><img width="auto" height="100" src="CardinalLogo.png"/></a></p>
+        <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+            <tbody>
+                <tr>
+                    <td style="padding: 0; line-height: 0;">
+                        <p id="name" style='font-size: 11pt; font-family: "Inter Semibold", Arial, sans-serif; color: #C32026; line-height: 16pt; margin: 0; padding: 0; font-weight: bold;'>
+                            </p>
+                        
+                        <p id="jobTitlePreview" style='font-size: 11pt; font-family: "Inter", Arial, sans-serif; color: #000000; line-height: 16pt; margin: 0; padding: 0 0 10px 0;'>
+                            </p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td style="padding: 0;">
+                        <p style='font-size: 20pt; font-family: "Inter Semibold", Arial, sans-serif; color: #C32026; line-height: 10pt; margin: 0; padding: 0;'>
+                            <b>—————————</b>
+                        </p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding: 0;">
+                        <p style='font-size: 14pt; font-family: "DM Serif Display", "Times New Roman", serif; color: #c32026; line-height: 20pt; margin: 0; padding: 0;'>
+                            Cardinal Compliance Consultants, LLC
+                        </p>
+                        <p style='font-size: 9pt; font-family: "Inter", Arial, sans-serif; color: #000000; line-height: 14pt; margin: 0;'>
+                            5353 Secor Road | Toledo, OH 43623 | 
+                            <a href="https://www.cardinalhs.net" style='font-size: 9pt; font-family: "Inter", Arial, sans-serif; color: #C32026; text-decoration: none;'>www.cardinalhs.net</a>
+                        </p>
+                        <p style='font-size: 9pt; font-family: "Inter", Arial, sans-serif; color: #000000; line-height: 14pt; margin: 0 0 10px 0;'>
+                            Phone: (419) 882-9224 | Fax: (419) 882-9226
+                        </p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td style="padding-top: 5px;">
+                        <a href="https://www.facebook.com/cardinalsafety" style="display: inline-block;">
+                            <img width="25" height="25" src="https://img.icons8.com/ios-filled/50/facebook-new.png" alt="facebook-new" style="border: 0; display: block; float: left; margin-right: 5px;"/>
+                        </a>
+                        <a href="https://www.linkedin.com/company/cardinalcompliance/" style="display: inline-block;">
+                            <img width="25" height="25" src="https://img.icons8.com/ios-filled/50/linkedin.png" alt="linkedin" style="border: 0; display: block; float: left; margin-right: 5px;"/>
+                        </a>
+                        <a href="http://www.youtube.com/@cardinalcompliance" style="display: inline-block;">
+                            <img width="25" height="25" src="https://img.icons8.com/ios-filled/50/youtube-play.png" alt="youtube-play" style="border: 0; display: block; float: left; margin-right: 5px;"/>
+                        </a>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td style="padding-top: 10px;">
+                        <a href="http://www.cardinalhs.net" style="display: block;">
+                            <img width="auto" height="100" src="CardinalLogo.png" alt="Company Logo" style="border: 0; display: block;"/>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     
     <button id="copySignatureButton">Copy Signature</button>
 
-    <script src="script.js"></script>
+    <script>
+        const fullNameInput = document.getElementById('fullName');
+        const jobTitleInput = document.getElementById('jobTitle');
+        const namePreview = document.getElementById('name');
+        const jobTitlePreview = document.getElementById('jobTitlePreview');
+        const copySignatureButton = document.getElementById('copySignatureButton');
+        const signaturePreview = document.querySelector('.signature-preview'); 
+        const notificationTimeout = 2000; // 2 seconds
 
+        let errorTimeoutId = null;
+
+        // Event listeners
+        fullNameInput.addEventListener('input', validateAndUpdateSignature);
+        jobTitleInput.addEventListener('input', validateAndUpdateSignature);
+        copySignatureButton.addEventListener('click', handleCopySignature);
+
+        // Initial update
+        updateSignature(); 
+
+        function validateAndUpdateSignature() {
+            // Regex allows letters, spaces, hyphens, periods, and commas
+            const isNameValid = validateInput(fullNameInput);
+            const isTitleValid = validateInput(jobTitleInput);
+
+            if (isNameValid && isTitleValid) {
+                updateSignature();
+                const activeError = document.querySelector('.notification.error');
+                if (activeError) {
+                    clearTimeout(errorTimeoutId);
+                    activeError.remove();
+                }
+            } else {
+                if (fullNameInput.value.length > 0 && !isNameValid || jobTitleInput.value.length > 0 && !isTitleValid) {
+                     showError('Only letters, spaces, hyphens, periods, and commas allowed.');
+                } else {
+                    updateSignature();
+                }
+            }
+        }
+
+        function validateInput(input) {
+            const value = input.value;
+            return /^[a-zA-Z\s\-\.\,]*$/.test(value);
+        }
+
+        function updateSignature() {
+            namePreview.textContent = fullNameInput.value.trim();
+            jobTitlePreview.textContent = jobTitleInput.value.trim();
+        }
+
+        function handleCopySignature() {
+            if (validateInput(fullNameInput) && validateInput(jobTitleInput)) {
+                copySignature();
+                showNotification('Signature copied to clipboard', false);
+            } else {
+                showError('Please fix the input errors before copying.');
+            }
+        }
+
+        function copySignature() {
+            const signatureHTML = signaturePreview.innerHTML;
+            const signatureText = signaturePreview.innerText;
+
+            // Use the modern Clipboard API to write both 'text/html' and 'text/plain'
+            navigator.clipboard.write([
+                new ClipboardItem({
+                    'text/html': new Blob([signatureHTML], { type: 'text/html' }),
+                    'text/plain': new Blob([signatureText], { type: 'text/plain' })
+                })
+            ])
+            .then(() => {
+                console.log('HTML and Text copied to clipboard');
+            })
+            .catch(err => {
+                console.error('Failed to copy complex data: ', err);
+                fallbackCopyTextToClipboard(signatureHTML, signatureText);
+            });
+        }
+
+        function fallbackCopyTextToClipboard(html, text) {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+            tempDiv.style.position = 'absolute';
+            tempDiv.style.left = '-9999px';
+            document.body.appendChild(tempDiv);
+            
+            const range = document.createRange();
+            range.selectNodeContents(tempDiv);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (!successful) {
+                    alert('Fallback copy failed. Please copy the text manually:\n\n' + text);
+                }
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+                alert('Fallback copy failed. Please copy the text manually:\n\n' + text);
+            }
+            
+            selection.removeAllRanges();
+            tempDiv.remove();
+        }
+
+        function showError(message) {
+            showNotification(message, true);
+        }
+
+        function showNotification(message, isError = false) {
+            clearTimeout(errorTimeoutId);
+            
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            const notification = document.createElement('div');
+            notification.classList.add('notification');
+            if (isError) {
+                notification.classList.add('error');
+            }
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            errorTimeoutId = setTimeout(() => {
+                notification.remove();
+            }, notificationTimeout + 500); 
+        }
+    </script>
 </body>
 </html>
